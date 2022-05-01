@@ -15,3 +15,16 @@ export interface Message {
   sender: User;
   createdAt: string;
 }
+
+export interface PaginatedResponse<T> {
+  rows: T[];
+  cursor_next: string | null;
+  cursor_prev: string | null;
+}
+
+export interface SendingMessage {
+  id: string;
+  sender: User;
+  text: string;
+  ts: number;
+}
