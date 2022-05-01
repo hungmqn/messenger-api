@@ -192,7 +192,7 @@ const Conversation = ({ goAccountSelection, accountId }: { accountId: string; go
                     <div className="name">
                       <strong>{conversation.participants[1].name}</strong>
                     </div>
-                    {/* {conversation.lastMessage && (
+                    {conversation.lastMessage && conversation.lastMessage.text && (
                       <>
                         <div>
                           {conversation.lastMessage.text.length > 12
@@ -201,7 +201,7 @@ const Conversation = ({ goAccountSelection, accountId }: { accountId: string; go
                         </div>
                         <small style={{ textAlign: "right" }}>{formatDate(conversation.lastMessage.createdAt)}</small>
                       </>
-                    )} */}
+                    )}
                   </div>
                 </div>
               ))}
