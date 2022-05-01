@@ -36,29 +36,29 @@ export const useCurrentAccount = ({ accountId }: GetCurrentAccount) => {
   return account;
 };
 
-export const useConversations = ({ accountId }: RequestConversations) => {
+export const useConversations = ({ accountId }: RequestConversations, params?: object) => {
   const [conversations, setConversations] = useState<PaginatedResponse<Conversation> | null>(null);
 
   useEffect(() => {
-    getConversations({ accountId })
+    getConversations({ accountId }, params)
       .then((res) => {
         setConversations(res.data);
       })
       .catch(() => {
         setConversations(null);
       });
-  }, [accountId]);
+  }, [accountId, params]);
 
   return conversations;
 };
 
-export const useMessages = ({ accountId, conversationId, autoFetch }: RequestMessages) => {
+export const useMessages = ({ accountId, conversationId, autoFetch }: RequestMessages, params?: object) => {
   const [data, setData] = useState<PaginatedResponse<Message> | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const fetchData = useCallback(
     () =>
-      getMessages({ accountId, conversationId })
+      getMessages({ accountId, conversationId }, params)
         .then((res) => {
           setData(res.data);
           setLoading(false);
@@ -67,7 +67,7 @@ export const useMessages = ({ accountId, conversationId, autoFetch }: RequestMes
           setData(null);
           setLoading(false);
         }),
-    [accountId, conversationId]
+    [accountId, conversationId, params]
   );
 
   useEffect(() => {
