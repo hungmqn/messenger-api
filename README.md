@@ -1,3 +1,5 @@
+Batch 01 - PRINCIPLES AND DESIGN PATTERNS OF REACT PROGRAMMING - Group 5.
+
 # messenger-api
 
 ## Getting started
